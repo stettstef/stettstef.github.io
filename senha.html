@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"> 
+
+<link href="csshome.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="sha512.js"></script>
+<script src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+
+<script type="text/javascript" >
+  function onPass(event) {
+    event = event || window.event;
+    if (event.keyCode != 13) {
+      return;
+    }
+
+    var pass = $("#pass").val();
+    var url = "/index.html" + hex_sha512(pass) + "/site.html";
+    $("#status").text("...");
+
+    $.ajax({
+      type: 'HEAD',
+      url: url,
+      success: function() {
+        var iframe = $("#iframe");
+        iframe.css("display", "inherit");
+        iframe.attr("src", url);
+        $("#prompt").css("display", "none");
+      },
+      error: function() {
+        $("#status").text("ERROR!");
+      }
+    });
+  }
+</script>
+
+</head>
+
+<body>
+  <div id="content" align="center" style="height: 100px; width: 100%;">
+    <div id="prompt">
+      <p><br><br><br><br><br><br><br><br><br><br><br><br>
+      enter password:<br>
+      <input type="password" onkeyup="onPass(event)" id="pass" style="stylesheet"><br>
+      <span id="status"></span>
+      </p>
+      <p><a href="https://github.com/gareins/githublock" style="stylesheet">GitHub Repository</a></p>
+    </div>
+    <iframe id="iframe" width="100%" height="100%" frameborder="0" />
+  </div>
+</body>
+</html>

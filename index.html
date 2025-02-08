@@ -1,53 +1,586 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8"> 
 
-<link href="csshome.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript" src="sha512.js"></script>
-<script src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script>
+var show = function (elem) {
+	esconderTodos('iframePagina');
+	elem.style.display = 'block';
+};
 
-<script type="text/javascript" >
-  function onPass(event) {
-    event = event || window.event;
-    if (event.keyCode != 13) {
-      return;
+var hide = function (elem) {
+	elem.style.display = 'none';
+};
+
+var esconderTodos = function(classname) {
+    var elementsToHide = document.getElementsByClassName(classname);
+    for(var i = 0; i < elementsToHide.length; i++){
+        hide(elementsToHide[i]);
     }
-
-    var pass = $("#pass").val();
-    var url = "/index.html" + hex_sha512(pass) + "/site.html";
-    $("#status").text("...");
-
-    $.ajax({
-      type: 'HEAD',
-      url: url,
-      success: function() {
-        var iframe = $("#iframe");
-        iframe.css("display", "inherit");
-        iframe.attr("src", url);
-        $("#prompt").css("display", "none");
-      },
-      error: function() {
-        $("#status").text("ERROR!");
-      }
-    });
-  }
+}
 </script>
 
-</head>
 
-<body>
-  <div id="content" align="center" style="height: 100px; width: 100%;">
-    <div id="prompt">
-      <p><br><br><br><br><br><br><br><br><br><br><br><br>
-      enter password:<br>
-      <input type="password" onkeyup="onPass(event)" id="pass" style="stylesheet"><br>
-      <span id="status"></span>
-      </p>
-      <p><a href="https://github.com/gareins/githublock" style="stylesheet">GitHub Repository</a></p>
-    </div>
-    <iframe id="iframe" width="100%" height="100%" frameborder="0" />
-  </div>
+
+
+<!----Oi, tudo bem? Não sei o quanto você domina de HTML, mas deixei as explicações do que é cada parte do código nesses textos entre hífens------->
+
+<!----- cabeçalho ----->
+
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+    
+<!----- fim do cabeçalho ----->
+    
+<!------ início estilo ----->
+    
+<link href="csshome.css" rel="stylesheet" type="text/css" />
+    
+<!------ fim do estilo ----->
+    
+</head>
+    
+<!-----SUMÁRIO---->    
+       
+<!---Título ---->
+    
+<h1>SUMÁRIO</h1><!----- as tags h1 são para títulos maiores, conforme o número vai aumentando, o tamanho da fonte vai diminuindo. esse código só tem configurado até o h3, caso precise de mais, só me pedir que incluo ----->
+    
+<!-----primeiro menu expansível----->  
+    
+<ul id="menu" class="menu"> <!-- Inicia o menu principal --> 
+    <li><a href="#citações">CITAÇÕES</a> <!-- Item normal do menu --> 
+        <div class="columns"> <!-- Inicia o box que conterá o conteúdo do dropdown -->
+			
+            <ul class="col"> <!-- Inicia o box de uma das 3 colunas com os links -->
+				<span>ZUMBIS</span> <!-- Título da coluna -->
+    <li><a href="#" onclick="show(document.querySelector('#bishop2008'))">BISHOP, 2008</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#cohen2012'))">COHEN, 2012</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#bishop2006'))">BISHOP, 2006</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#fausto2017'))">FAUSTO, 2017</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#brooks2003'))">BROOKS, 2003</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#luckhurst2016'))">LUCKHURST, 2016</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#oloff2012'))">OLOFF, 2012</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#stokes2010'))">STOKES, 2010</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#kee2011'))">KEE, 2011</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#penhagonsalves2018'))">PENHA & GONSALVES, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#dunker2018'))">DUNKER, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#netookamoto2018'))">NETO & OKAMOTO, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#estevao2018'))">ESTEVAO, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#filho2018'))">FILHO, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#moder2018'))">MODER, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#comentalejaffe2014'))">COMENTALE & JAFFE, 2014</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#hasslerforest2014'))">HASSLER-FOREST, 2014</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#bohman2014'))">BOHMAN, 2014</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#shapiro2014'))">SHAPIRO, 2014</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#raglin2014'))">RAGLIN, 2014</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#sattar2014'))">SATTAR, 2014</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#morton2014'))">MORTON, 2014</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#ruthven2014'))">RUTHVEN, 2014</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#gibson2014'))">GIBSON, 2014</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#newbury2012'))">NEWBURY, 2012</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#webbbyrnand2008'))">WEB & BYRNAND, 2008</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#boom2011'))">BOOM, 2011</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#christie2011'))">CHRISTIE, 2011</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#muntean2011'))">MUNTEAN, 2011</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#zanimeaux2011'))">ZANI & MEAUX, 2011</a></li>               
+    <li><a href="#" onclick="show(document.querySelector('#pifer2011'))">PIFER, 2011</a></li>               
+
+    </ul>			
+    <ul class="col">
+                				<span>WHITE GAZE</span>
+
+    <li><a href="#" onclick="show(document.querySelector('#yancy2017'))">YANCY, 2017</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#hooks2019'))">HOOKS, 2019</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#williams2020'))">WILLIAMS, 2020</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#dotson2006'))">DOTSON, 2006</a></li>
+			</ul>
+ <ul class="col">
+                				<span>CIÊNCIA</span>
+
+    <li><a href="#" onclick="show(document.querySelector('#stengers2002'))">STENGERS, 2002</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#stengers2018'))">STENGERS, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#lewis1992'))">LEWIS, 1992</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#merchant1989'))">MERCHANT, 1989</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#harding2015'))">HARDING, 2015</a></li>
+
+
+
+
+			</ul>
+<ul class="col">
+                				<span>HORROR</span>
+
+    <li><a href="#" onclick="show(document.querySelector('#coleman2019'))">COLEMAN, 2019</a></li>
+			</ul>
+
+
+                <ul class="col">
+				<span>HAITI</span>
+                    
+    <li><a href="#" onclick="show(document.querySelector('#charlier2015'))">CHARLIER, 2015</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#degoul2011'))">DEGOUL, 2011</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#seabrook2016'))">SEABROOK, 2016</a></li>
+	</ul>
+                <ul class="col">
+				<span>RELAÇÕES INTERNACIONAIS</span>
+                    
+    <li><a href="#" onclick="show(document.querySelector('#drezner2015'))">DREZNER, 2015</a></li>
+	</ul>
+       
+            <ul class="col">
+				<span>ONTOLOGIA</span>
+                    
+    <li>
+<a href="#" onclick="show(document.querySelector('#harman2018'))">HARMAN, 2018</a></li>
+<li><a href="#" onclick="show(document.querySelector('#jonas2017'))">JONAS, 2017</a></li>
+<li><a href="#" onclick="show(document.querySelector('#despret2023'))">DESPRET, 2023</a></li>
+<li><a href="#" onclick="show(document.querySelector('#rolnik2021'))">ROLNIK, 2021</a></li>
+<li><a href="#" onclick="show(document.querySelector('#simondon2020'))">SIMONDON, 2020</a></li>
+<li><a href="#" onclick="show(document.querySelector('#povinelli2023'))">POVINELLI, 2023</a></li>
+<li><a href="#" onclick="show(document.querySelector('#serres1994'))">SERRES, 1994</a></li>
+<li><a href="#" onclick="show(document.querySelector('#petit2023'))">PETIT, 2023</a></li>
+<li><a href="#" onclick="show(document.querySelector('#latour2019'))">LATOUR, 2019</a></li>
+<li><a href="#" onclick="show(document.querySelector('#lapoujade2017'))">LAPOUJADE, 2017</a></li>
+<li><a href="#" onclick="show(document.querySelector('#souriau2020'))">SOURIAU, 2020</a></li>
+<li><a href="#" onclick="show(document.querySelector('#povinelli2024'))">POVINELLI, 2024</a></li>
+<li><a href="#" onclick="show(document.querySelector('#luduenaromandini2021'))">LUDUEÑA ROMANDINI, 2021</a></li>
+<li><a href="#" onclick="show(document.querySelector('#luduenaromandini2023'))">LUDUEÑA ROMANDINI, 2023</a></li>
+<li><a href="#" onclick="show(document.querySelector('#nodari2024'))">NODARI, 2024</a></li>
+
+	</ul>
+
+
+<ul class="col">
+                				<span>FUNGOS</span>
+
+   <li><a href="#" onclick="show(document.querySelector('#millsbattermanfield2017'))">MILLS, BATTERMAN, FIELD, 2017</a></li>
+   <li><a href="#" onclick="show(document.querySelector('#read1997'))">READ, 1997</a></li>
+   <li><a href="#" onclick="show(document.querySelector('#sheldrake2021'))">COLEMAN, 2019</a></li>
+
+
+			</ul>
+<ul class="col">
+				<span>APOCALIPSE</span>
+                
+    <li><a href="#" onclick="show(document.querySelector('#hollinger2000'))">HOLLINGER, 2000</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#hughes2021'))">HUGHES, 2021</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#tathe2016'))">THATE, 2016</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#lilly2016'))">LILLY, 2016</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#murphy2016'))">MURPHY, 2016</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#suvi2023'))">SUVI, 2023</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#buell2010'))">BUELL, 2010</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#fagan2017'))">FAGAN, 2017</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#rothe2020'))">ROTHE, 2020</a></li>
+                
+	</ul>
+	
+
+            <ul class="col">
+                				<span>ÉTICA AMBIENTAL</span>
+
+    <li><a href="#" onclick="show(document.querySelector('#routley1973'))">ROUTLEY, 1973</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#routleyroutley1973'))">ROUTLEY & ROUTLEY, 1973</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#krenak2022'))">KRENAK, 2022</a></li>
+			</ul>
+            <ul class="col">
+
+	<span>TEMPO/ESPAÇO</span>
+
+            <li><a href=#suvi2023>SUVI, 2023</a></li>
+
+			</ul>
+            
+			<ul class="col">
+				<span>COLONIALISMO</span>
+                
+    <li><a href="#" onclick="show(document.querySelector('#fanon2008'))">FANON, 2008</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#said1994'))">SAID, 1994</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#comentale2014'))">COMENTALE, 2014</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#sartre1968'))">SARTRE, 1968</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#negobispo2023'))">NEGO BISPO, 2023</a></li>
+			</ul>
+            
+			<ul class="col">
+				<span>PÓS-HUMANISMO</span>
+                
+    <li><a href="#" onclick="show(document.querySelector('#haraway2000'))">HARAWAY, 2000</a></li>
+            <li><a href="#" onclick="show(document.querySelector('#lauroembry2008'))">LAURO & EMBRY, 2008</a></li>
+            <li><a href="#" onclick="show(document.querySelector('#hayles1999'))">HAYLES, 1999</a></li>
+
+			</ul>
+            
+			<ul class="col">
+				<span>BIOLOGIA</span>
+                
+    <li><a href="#" onclick="show(document.querySelector('#sodikoff2013'))">SODIKOFF, 2013</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#sohdi2008'))">SOHDI et al., 2008</a></li>
+			</ul>
+            
+			<ul class="col">
+				<span>ANTROPOCENO</span>
+                
+    <li><a href="#" onclick="show(document.querySelector('#stengers2015'))">STENGERS, 2015</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#latour2020'))">LATOUR, 2020</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#haraway2016'))">HARAWAY, 2016</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#margulis19955'))">MARGULIS, 1995</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#prigoginestengers1984'))">PRIGOGINE & STENGERS, 1984</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#latour1994'))">LATOUR, 1994</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#marques2016'))">MARQUES, 2016</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#asimov1979'))">ASIMOV, 1979</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#danowskiviveirosdecastro2017'))">DANOWSKI & VIVEIROS DE CASTRO, 2017</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#morton2013'))">MORTON, 2013</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#valentim2018'))">VALENTIM, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#tsing2022'))">TSING, 2022</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#latour2020b'))">LATOUR, 2020b</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#moore2023'))">MOORE, 2023</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#chakrabarty2021'))">CHAKRABARTY, 2021</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#danowskiviveirosdecastro2023'))">DANOSKI & VIVEIROS DE CASTRO, 2023</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#valentim2024'))">VALENTIM, 2024</a></li>
+
+                
+			</ul>
+            
+            
+            <ul class="col">
+				<span>CINEMA</span>
+                
+    <li><a href="#" onclick="show(document.querySelector('#bernadet1996'))">BERNADET, 1996</a></li>
+                
+			</ul>
+            
+
+            
+            			<ul class="col">
+				<span>LINGUAGEM</span>
+                
+    <li><a href="#" onclick="show(document.querySelector('#soldatjaffe2014'))">SOLDAT-JAFFE, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#rome2018'))">ROMÉ, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#fausto2012'))">FAUSTO, 2012</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#agamben2006'))">AGAMBEN, 2006</a></li>
+			</ul>
+            
+			<ul class="col">
+				<span>PSICANÁLISE</span>
+                
+    <li><a href="#" onclick="show(document.querySelector('#freud2019'))">FREUD, 2019</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#dolar2018'))">DOLAR, 2018</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#freud2020'))">FREUD, 2020</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#freud2021'))">FREUD, 2021</a></li>
+
+                
+	</ul>
+
+<ul class="col">
+				<span>FICÇÃO</span>
+                
+    <li><a href="#" onclick="show(document.querySelector('#lapoujade2022'))">LAPOUJADE, 2022</a></li>
+   
+
+                
+			</ul>
+
+</ul>
+
+
+
+        </div> <!-- Fecha o box que conterá o conteúdo do dropdown -->
+    </li> <!-- Fecha item dropdown do menu -->
+</ul> <!-- Fecha o menu principal --> 
+
+
+    <ul class=menu>
+
+<li><a href=#bibliografia>BIBLIOGRAFIA</a>
+<ul>
+    <li><a href="#" onclick="show(document.querySelector('#lidas'))">LIDAS</a></li>
+    <li><a href="#proximas">PRÓXIMAS</a></li>
+    
+    <ul>
+    <li><a href="#" onclick="show(document.querySelector('#proximosartigos'))">ARTIGOS/CAPÍTULOS</a></li>
+    <li><a href="#" onclick="show(document.querySelector('#proximoslivros'))">LIVROS</a></li>
+
+    </ul>
+    
+    
+    </li>
+
+    </ul>
+              
+        </ul>
+    
+    <ul class=menu>
+
+<li><a href=#filmografia>FILMOGRAFIA</a>
+<ul>
+    <li><a href="#" onclick="show(document.querySelector('#vistos'))">VISTOS</a></li>
+
+    </ul>
+              
+        </ul>
+
+<ul class=menu>
+
+<li><a href=#smartnotes>SMART NOTES</a>
+<ul>
+    <li><a href="#" onclick="show(document.querySelector('#modelosmartnotes'))">MODELO SMART NOTES</a></li>
+
+    </ul>
+              
+        </ul>
+
+    
+<!-----fim do menu expansível----->    
+ 
+    <br><br><br><br>
+    
+         <body> 
+
+             
+<!------início da caixinha------>
+
+        <div align="justify" style="height: 420px; width: 100%;"> <!-----aqui, em "height", você pode ajustar a altura da caixinha, se quiser deixá-la mais comprida, o "align" deixa o texto justificado ----->  
+
+<iframe class="iframePagina" src="welcome.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%;"></iframe>
+
+<iframe id="bishop2008" class="iframePagina" src="bishop2008.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="fausto2017" class="iframePagina" src="fausto2017.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="bishop2006" class="iframePagina" src="bishop2006.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="cohen2012" class="iframePagina" src="cohen2012.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="lauroembry2008" class="iframePagina" src="lauroembry2008.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="brooks2003" class="iframePagina" src="brooks2003.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="luckhurst2016" class="iframePagina" src="luckhurst2016.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="haraway2000" class="iframePagina" src="haraway2000.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="fanon2008" class="iframePagina" src="fanon2008.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="sodikoff2013" class="iframePagina" src="sodikoff2013.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="said1994" class="iframePagina" src="said1994.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="oloff2012" class="iframePagina" src="oloff2012.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="sohdi2008" class="iframePagina" src="sohdi2008.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="stokes2010" class="iframePagina" src="stokes2010.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="kee2011" class="iframePagina" src="kee2011.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="yancy2017" class="iframePagina" src="yancy2017.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="hooks2019" class="iframePagina" src="hooks2019.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="coleman2019" class="iframePagina" src="coleman2019.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="williams2020" class="iframePagina" src="williams2020.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="dotson2006" class="iframePagina" src="dotson2006.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="stengers2015" class="iframePagina" src="stengers2015.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="freud2019" class="iframePagina" src="freud2019.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="penhagonsalves2018" class="iframePagina" src="penhagonsalves2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="dunker2018" class="iframePagina" src="dunker2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="netookamoto2018" class="iframePagina" src="netookamoto2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="estevao2018" class="iframePagina" src="estevao2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="filho2018" class="iframePagina" src="filho2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="rome2018" class="iframePagina" src="rome2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="moder2018" class="iframePagina" src="moder2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="dolar2018" class="iframePagina" src="dolar2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="charlier2015" class="iframePagina" src="charlier2015.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="drezner2015" class="iframePagina" src="drezner2015.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="freud2020" class="iframePagina" src="freud2020.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="freud2021" class="iframePagina" src="freud2021.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="fausto2012" class="iframePagina" src="fausto2012.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="agamben2006" class="iframePagina" src="agamben2006.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="latour2020" class="iframePagina" src="latour2020.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="comentalejaffe2014" class="iframePagina" src="comentalejaffe2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="hasslerforest2014" class="iframePagina" src="hasslerforest2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="bohman2014" class="iframePagina" src="bohman2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="shapiro2014" class="iframePagina" src="shapiro2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="raglin2014" class="iframePagina" src="raglin2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="sattar2014" class="iframePagina" src="sattar2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="comentale2014" class="iframePagina" src="comentale2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="morton2014" class="iframePagina" src="morton2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="ruthven2014" class="iframePagina" src="ruthven2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="soldatjaffe2014" class="iframePagina" src="soldatjaffe2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="gibson2014" class="iframePagina" src="gibson2014.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="newbury2012" class="iframePagina" src="newbury2012.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="webbbyrnand2008" class="iframePagina" src="webbbyrnand2008.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="hayles1999" class="iframePagina" src="hayles1999.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="degoul2011" class="iframePagina" src="degoul2011.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="boom2011" class="iframePagina" src="boom2011.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="christie2011" class="iframePagina" src="christie2011.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="muntean2011" class="iframePagina" src="muntean2011.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="zanimeaux2011" class="iframePagina" src="zanimeaux2011.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="pifer2011" class="iframePagina" src="pifer2011.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="sheldrake2021" class="iframePagina" src="sheldrake2021.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="seabrook2016" class="iframePagina" src="seabrook2016.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="haraway2016" class="iframePagina" src="haraway2016.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="sartre1968" class="iframePagina" src="sartre1968.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="margulis1995" class="iframePagina" src="margulis1995.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="prigoginestengers1984" class="iframePagina" src="prigoginestengers1984.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="latour1994" class="iframePagina" src="latour1994.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="marques2016" class="iframePagina" src="marques2016.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="asimov1979" class="iframePagina" src="asimov1979.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="bernadet1996" class="iframePagina" src="bernadet1996.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="danowskiviveirosdecastro2017" class="iframePagina" src="danowskiviveirosdecastro2017.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="morton2013" class="iframePagina" src="morton2013.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="routley1973" class="iframePagina" src="routley1973.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="routleyroutley1973" class="iframePagina" src="routleyroutley1973.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="valentim2018" class="iframePagina" src="valentim2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="tsing2022" class="iframePagina" src="tsing2022.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="latour2020b" class="iframePagina" src="latour2020b.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="moore2023" class="iframePagina" src="moore2023.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="hollinger2000" class="iframePagina" src="hollinger2000.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="hughes2021" class="iframePagina" src="hughes2021.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="thate2016" class="iframePagina" src="thate2016.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="lilly2016" class="iframePagina" src="lilly2016.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="murphy2016" class="iframePagina" src="murphy2016.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="krenak2022" class="iframePagina" src="krenak2022.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="suvi2023" class="iframePagina" src="suvi2023.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="chakrabarty2021" class="iframePagina" src="chakrabarty2021.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="millsbattermanfield2017" class="iframePagina" src="millsbattermanfield2017.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="read1997" class="iframePagina" src="read1997.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="buell2010" class="iframePagina" src="buell2010.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="fagan2017" class="iframePagina" src="fagan2017.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="rothe2020" class="iframePagina" src="rothe2020.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="stengers2002" class="iframePagina" src="stengers2002.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="stengers2018" class="iframePagina" src="stengers2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="lewis1992" class="iframePagina" src="lewis1992.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="merchant1989" class="iframePagina" src="merchant1989.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="harding2015" class="iframePagina" src="harding2015.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="harman2018" class="iframePagina" src="harman2018.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="jonas2017" class="iframePagina" src="jonas2017.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="despret2023" class="iframePagina" src="despret2023.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="rolnik2021" class="iframePagina" src="rolnik2021.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="simondon2020" class="iframePagina" src="simondon2020.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="negobispo2023" class="iframePagina" src="negobispo2023.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="danowskiviveirosdecastro2023" class="iframePagina" src="danowskiviveirosdecastro2023.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="povinelli2023" class="iframePagina" src="povinelli2023.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="serres1994" class="iframePagina" src="serres1994.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="petit2023" class="iframePagina" src="petit2023.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="valentim2024" class="iframePagina" src="valentim2024.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="lapoujade2022" class="iframePagina" src="lapoujade2022.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="latour2019" class="iframePagina" src="latour2019.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="lapoujade2017" class="iframePagina" src="lapoujade2017.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="souriau2020" class="iframePagina" src="souriau2020.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="povinelli2024" class="iframePagina" src="povinelli2024.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="luduenaromandini2021" class="iframePagina" src="luduenaromandini2021.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="luduenaromandini2023" class="iframePagina" src="luduenaromandini2023.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="nodari2024" class="iframePagina" src="nodari2024.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="lidas" class="iframePagina" src="lidas.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="proximosartigos" class="iframePagina" src="proximosartigos.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="proximoslivros" class="iframePagina" src="proximoslivros.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="vistos" class="iframePagina" src="vistos.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+<iframe id="modelosmartnotes" class="iframePagina" src="_modelosmartnotes.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+
+</div>
+             
+<!------fim da caixinha------>
+
+<!------ FIM DO CÓDIGO - não deletar! ----->
+      	
 </body>
 </html>
