@@ -1,0 +1,108 @@
+h1{
+  font-style: bold;
+    font-size: 22px;
+    padding: 5;
+
+}
+h2{
+  color: solid #c0c0c0;
+        font-size: 20px;
+
+    padding: 5;
+}
+        
+h3{
+  color: solid #c0c0c0;
+  font-size: 18px;
+    padding: 5;
+
+}
+        
+*{margin: 0; padding: 0;}
+    
+
+body{
+font-size: 16px;
+    margin: 100;
+    border: 1px
+border-color: #000;
+}
+        
+        .find-in-document-container{
+  background-color: #FFF;
+  box-shadow: 2px 2px 5px 2px #ccc;
+  padding: 5px;
+  position: fixed;
+  right: 0;
+  width: auto;
+  z-index: 9999;
+}
+.txtFoundInSearch{
+  background-color: #ff0;
+}
+
+.menu{list-style:none; border:1px solid #c0c0c0; float:left; }
+
+.menu li{position:relative; float:left; border-right:1px solid #c0c0c0; }
+
+.menu li a{color:#333; text-decoration:none; padding:5px 10px; display:block;}
+
+.menu li a:hover{background:#333; color:#fff; -moz-box-shadow:0 3px 10px 0 #CCC; -webkit-box-shadow:0 3px 10px 0 #ccc; text-shadow:0px 0px 5px #fff; }
+
+.menu li   ul{position:absolute; top:25px; left:0; background-color:#fff; display:none; }
+
+.menu li:hover ul, .menu li.over ul{display:block;}
+
+.menu li ul li{border:1px solid #c0c0c0; display:block; width:200px;}
+        
+  label {display: block;}
+  input, button {padding: 5px; border: 1px solid #c0c0c0; font: arial;}
+  input {width: 150px;}
+        
+    #menu li .columns {
+	position:absolute; /* Importante para posicionar o conteúdo do dropdown */
+	left:-9999px; /* Esconde o dropdown quando o mouse não está em cima do link */
+	padding:0;
+	border:1px solid #c0c0c0;
+	background:#ffffff;
+	width: 1000px;
+}
+#menu li:hover .columns{
+	left:0;
+}
+#menu ul li {
+	line-height:16px;
+	font-size:12px;
+}
+#menu li ul.col{
+	display:inline;
+	float: left;
+	position: relative;
+	padding:0;
+	margin:0 0 0 0;
+	width:16.66%;
+    height: 100%;
+}
+#menu li ul.col li {
+	margin:0 0 0px 0;
+	padding:0px 0px;
+	width:85%;
+	border:1px solid #c0c0c0;
+	list-style-type:none;
+	font-size:12px;
+	height:100%;
+	position:relative;
+	float:none;
+
+}
+#menu li .col span{
+	font-size:14px;
+	color:#000000;
+	font-weight:bold;
+}
+#menu li .col li a{
+	font-size:14px;
+	color:#000000;
+}
+#menu li .col li a:hover{color:#c0c0c0;}
+}

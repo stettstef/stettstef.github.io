@@ -1,0 +1,363 @@
+<!-----ignore isso aqui----->
+
+<script>
+var show = function (elem) {
+	esconderTodos('iframePagina');
+	elem.style.display = 'block';
+};
+
+var hide = function (elem) {
+	elem.style.display = 'none';
+};
+
+var esconderTodos = function(classname) {
+    var elementsToHide = document.getElementsByClassName(classname);
+    for(var i = 0; i < elementsToHide.length; i++){
+        hide(elementsToHide[i]);
+    }
+}
+</script>
+
+<!------oi! ----->
+
+<!----Oi, tudo bem? Não sei o quanto você domina de HTML, mas deixei as explicações do que é cada parte do código nesses textos entre hífens------->
+
+<!----- cabeçalho ----->
+
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+    
+<!----- fim do cabeçalho ----->
+    
+<!------ início estilo ----->
+<!------ aqui eu fiz uma folha de estilo separada e linkei aqui, se você preferir eu posso colocar a folha de estilo no arquivo mesmo (denovo, não sei quanto você manja de html!----->
+    
+<link href="csshome.css" rel="stylesheet" type="text/css" />
+    
+<!------ fim do estilo ----->
+    
+</head>
+    
+<!-----SUMÁRIO---->    
+       
+<!---Título ---->
+    
+<h1>SUMÁRIO</h1><!----- as tags h1 são para títulos maiores, conforme o número vai aumentando, o tamanho da fonte vai diminuindo. esse código só tem configurado até o h3, caso precise de mais, só me pedir que incluo ----->
+    
+<!-----primeiro menu expansível----->  
+    
+<ul id="menu" class="menu"> <!-- Inicia o menu principal --> 
+<li><a href="#citações">CITAÇÕES</a> <!-- Item normal do menu --> 
+<div class="columns"> <!-- Inicia o box que conterá o conteúdo do dropdown -->
+			
+<ul class="col"> <!-- Inicia o box das colunas com os links -->
+<span>ZUMBIS</span> <!-- Título da coluna -->
+
+<li><a href="#" onclick="show(document.querySelector('#modelofichamento'))">BISHOP, 2008</a></li><!----- aqui nas hashtags você coloca o autorDATA do texto, esse é o ID do seu documento, mais lá embaixo vamos usar denovo! no espaço entre os "><" você coloca o título que vai aparecer no site aberto no navegador. copia e cola pra cada novo fichamento---->
+<li><a href="#" onclick="show(document.querySelector('#cohen2012'))">COHEN, 2012</a></li>
+<li><a href="#" onclick="show(document.querySelector('#bishop2006'))">BISHOP, 2006</a></li>
+
+</ul>
+			
+<ul class="col">
+<span>WHITE GAZE</span><!-----outro título ---->
+
+<li><a href="#" onclick="show(document.querySelector('#yancy2017'))">YANCY, 2017</a></li>
+
+</ul>
+
+<ul class="col">
+<span>HORROR</span><!-----outro título... já sacou, né? copia do <ul... ao </ul> para abrir nova categoria de fichamentos!----->
+
+<li><a href="#" onclick="show(document.querySelector('#coleman2019'))">COLEMAN, 2019</a></li>
+
+</ul>
+
+<ul class="col">
+<span>FUNGOS</span>
+
+<li><a href="#" onclick="show(document.querySelector('#millsbattermanfield2017'))">MILLS, BATTERMAN, FIELD, 2017</a></li>
+
+</ul>
+
+<ul class="col">
+<span>APOCALIPSE</span>
+                
+<li><a href="#" onclick="show(document.querySelector('#hollinger2000'))">HOLLINGER, 2000</a></li>
+                
+</ul>
+
+<ul class="col">
+<span>ÉTICA AMBIENTAL</span>
+
+<li><a href="#" onclick="show(document.querySelector('#routley1973'))">ROUTLEY, 1973</a></li>
+
+</ul>
+
+<ul class="col">
+<span>TEMPO/ESPAÇO</span>
+
+<li><a href=#suvi2023>SUVI, 2023</a></li>
+
+</ul>
+            
+<ul class="col">
+<span>COLONIALISMO</span>
+                
+<li><a href="#" onclick="show(document.querySelector('#fanon2008'))">FANON, 2008</a></li>
+
+</ul>
+            
+<ul class="col">
+<span>PÓS-HUMANISMO</span>
+                
+<li><a href="#" onclick="show(document.querySelector('#haraway2000'))">HARAWAY, 2000</a></li>
+
+</ul>
+            
+<ul class="col">
+<span>BIOLOGIA</span>
+                
+<li><a href="#" onclick="show(document.querySelector('#sodikoff2013'))">SODIKOFF, 2013</a></li>
+
+</ul>
+            
+<ul class="col">
+<span>ANTROPOCENO</span>
+                
+<li><a href="#" onclick="show(document.querySelector('#stengers2015'))">STENGERS, 2015</a></li>
+                
+</ul>
+            
+<ul class="col">
+<span>CINEMA</span>
+                
+<li><a href="#" onclick="show(document.querySelector('#bernadet1996'))">BERNADET, 1996</a></li>
+                
+</ul>
+                     
+<ul class="col">
+<span>LINGUAGEM</span>
+                
+<li><a href="#" onclick="show(document.querySelector('#soldatjaffe2014'))">SOLDAT-JAFFE, 2018</a></li>
+
+</ul>
+            
+<ul class="col">
+<span>PSICANÁLISE</span>
+                
+<li><a href="#" onclick="show(document.querySelector('#freud2019'))">FREUD, 2019</a></li>
+                
+</ul>
+
+<ul class="col">
+<span>HAITI</span>
+                    
+<li><a href="#" onclick="show(document.querySelector('#charlier2015'))">CHARLIER, 2015</a></li>
+</ul>
+
+<ul class="col">
+<span>RELAÇÕES INTERNACIONAIS</span>
+                    
+<li><a href="#" onclick="show(document.querySelector('#drezner2015'))">DREZNER, 2015</a></li>
+</ul>        
+
+</div> <!-- Fecha o box que conterá o conteúdo do dropdown -->
+</li> <!-- Fecha item dropdown do menu -->
+</ul> <!-- Fecha o menu principal --> 
+
+<!-----início menu bibliografia----->
+
+<ul class=menu>
+
+<li><a href=#bibliografia>BIBLIOGRAFIA</a>
+<ul>
+<li><b><a href=#lidas>LIDAS</a></b></li>
+
+<li><b><a href=#proximas>PRÓXIMAS</a></b>
+    
+<ul><!-----esse ul está aberto DENTRO do próximas, pois é um novo menu, agindo como se fosse um submenu----->
+<li><a href=#artigos>ARTIGOS</a></li>
+<li><a href=#livros>LIVROS</a></li>
+</ul>
+     
+</li>
+
+</ul>
+              
+</ul>
+
+<!-----menu expansível filmografia ----->
+<!-----deixei a caixinha de filmografia porque você pode acabar usando pra alguma outra coisa, caso não trabalhe com filmes----->
+    
+<ul class=menu>
+
+<li><a href=#filmografia>FILMOGRAFIA</a>
+<ul>
+<li><a href=#vistos>VISTOS</a></li>
+
+</ul>
+
+<!-----fecha o menu----->
+              
+</ul>
+    
+<!-----fim do menu expansível----->  
+
+<!-----INÍCIO CAIXA DE PESQUISA----->  
+
+    <body>
+        <form name="f1" action="" 
+onSubmit="if(this.t1.value!=null && this.t1.value!='')
+findString(this.t1.value);return false"
+>
+<input type="text" name=t1 value="" size=20>
+<input type="submit" name=b1 value="PROCURAR" size=10>
+</form>
+</body>
+<script language="JavaScript">
+<!--
+var TRange=null
+
+function findString (str) {
+if (parseInt(navigator.appVersion)<4) return;
+var strFound;
+if (window.find) {
+
+// CODE FOR BROWSERS THAT SUPPORT window.find
+
+strFound=self.find(str);
+if (strFound && self.getSelection && !self.getSelection().anchorNode) {
+strFound=self.find(str)
+}
+if (!strFound) {
+strFound=self.find(str,0,1)
+while (self.find(str,0,1)) continue
+}
+}
+else if (navigator.appName.indexOf("Microsoft")!=-1) {
+
+// EXPLORER-SPECIFIC CODE
+
+if (TRange!=null) {
+TRange.collapse(false)
+strFound=TRange.findText(str)
+if (strFound) TRange.select()
+}
+if (TRange==null || strFound==0) {
+TRange=self.document.body.createTextRange()
+strFound=TRange.findText(str)
+if (strFound) TRange.select()
+}
+}
+else if (navigator.appName=="Opera") {
+alert ("Opera browsers not supported, sorry...")
+return;
+}
+if (!strFound) alert ("String '"+str+"' not found!")
+return;
+}
+//-->
+</script>
+
+<!-----FIM DA CAIXA DE PESQUISA----->  
+ 
+<br><br>
+    
+<body> 
+        
+<!-----CITAÇÕES----->  
+             
+<!-----título----->  
+
+<h1 id=citacoes>CITAÇÕES</h1>
+             
+<!------início da caixinha------>
+
+<div align="justify" style="height: 420px; width: 100%;"> 
+<!-----aqui, em "height", você pode ajustar a altura da caixinha, se quiser deixá-la mais comprida, o "align" deixa o texto justificado ----->  
+
+<iframe class="iframePagina" src="welcome.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%;"></iframe>
+<iframe id="bishop2008" class="iframePagina" src="modelofichamento.html" frameborder="0" style="overflow: auto; height: 420px; width: 100%; display: none;"></iframe>
+<!-----isso aqui é o que você vai ter que colar DENTRO dessa div toda vez que "cadastrar um novo autor". esse código aqui é a garantia de que o documento de fichamento do autor vai abrir dentro dessa caixinha aqui :) ----->
+
+</div>
+             
+<!------fim da caixinha------>
+
+<br><br>
+              
+<!--------------BIBLIOGRAFIA------>
+             
+<!------ título ----->
+             
+<h1 id=bibliografia>BIBLIOGRAFIA</h1>
+             
+<!------início da caixinha------>
+
+<div align="justify" style="overflow: auto; height: 210px; width: 100%;">
+<!-----aqui, em "height", você pode ajustar a altura da caixinha, se quiser deixá-la mais comprida, o "align" deixa o texto justificado -----> 
+     
+<h2 id=lidas>LIDAS</h2>
+     
+<h3>ARTIGO</h3>
+     
+SOBRENOME, Nome. Título: Subtítulo. <i>IN:</i> <b>Nome da Revista</b>, volume, número, ano. p. xx-XXX.<br><br> 
+<!----- copiar e colar esta linha para adicionar bibliografia ----->
+     
+<!----- aqui você usa <b>para negrito</b>, <i>para itálico</i> e <u> para sublinhado</u>. <br> é a quebra de linha -----> 
+     
+<h3>LIVRO</h3>
+     
+SOBRENOME, Nome. <b>Título</b>: Subtítulo. Cidade: Editora, ANO.<br><br><!----- copiar e colar esta linha para adicionar bibliografia ----->
+     
+<h2 id=naolidas>NÃO LIDAS</h2>
+
+<h2 id=naotenho>NÃO TENHO</h2>
+     
+<!----- COLE AQUI - ANTES DO DIV ----->
+
+</div>
+             
+<!------fim da caixinha------>
+    
+<br><br>
+             
+<!------ deixei a caixinha de filmografia pois não sei a sua área de estudo, qualquer coisa pode tirar ou substituir ----->
+
+             
+<!--------------FILMOGRAFIA------>
+
+<!------ título ----->
+
+<h1 id=filmografia>FILMOGRAFIA</h1>
+<!-----para substituir você só precisa alterar o ID no menu lá em cima e o que está entre "><" -----> 
+             
+<!------início da caixinha------>
+
+<div align="justify" style="overflow: auto; height: 210px; width: 100%;">
+<!-----aqui, em "height", você pode ajustar a altura da caixinha, se quiser deixá-la mais comprida, o "align" deixa o texto justificado -----> 
+                           
+<h2 id=vistos>VISTOS</h2>
+     
+<h3>Título aqui</h3><br><br>
+     
+texto aqui
+     
+<h2 id=naovistos>NÃO VISTOS</h2>
+     
+<h3>Título aqui</h3><br><br>
+     
+texto aqui 
+         
+<!----- COLE AQUI - ANTES DO DIV ----->
+
+</div> 
+             
+<!------fim da caixinha------>
+
+<!------ FIM DO CÓDIGO - não deletar! ----->
+      	
+</body>
+</html>
