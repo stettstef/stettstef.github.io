@@ -186,24 +186,6 @@
             display: block !important;
         }
 
-	#searchInput, #searchButton {
-        font-family: Arial, sans-serif;
-	}
-
-	#searchResults {
-        font-family: Arial, sans-serif;
-        font-size: 10px;
-	}
-
-	.search-result-link {
-        color: #3a1d4d;
-        text-decoration: none;
-	}
-
-	.search-result-link:hover {
-        text-decoration: underline;
-	}
-
     </style>
 </head>
 <body>
@@ -552,21 +534,7 @@
                 <li>
 			<a href="#" data-page="vistos.html">VISTOS</a>
 
-              </ul>
-	</li>
-
-	<li class="dropdown">
-    	    <a href="#">PESQUISA</a>
-    	    <ul class="dropdown-content">
-        	<li>
-            		<div style="padding: 10px; width: 300px;">
-                	<input type="text" id="searchInput" placeholder="Digite sua pesquisa..." style="width: 100%; padding: 8px; margin-bottom: 10px;">
-                	<button id="searchButton" style="width: 100%; padding: 8px;">Pesquisar</button>
-                	<div id="searchResults" style="margin-top: 10px; max-height: 400px; overflow-y: auto;"></div>
-            		</div>
-        	</li>
-    	    </ul>
-	</li>
+                </li>
 
     </ul>
 </nav>
@@ -577,233 +545,77 @@
         <iframe id="conteudoCarregado" src="welcome.html"></iframe>
     </main>
 
-<script>
-// TODO: SUBSTITUA TODO O SEU CÓDIGO JavaScript atual por ESTE
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('[data-page]');
+            const iframe = document.getElementById('conteudoCarregado');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            const flyouts = document.querySelectorAll('.flyout');
 
-document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('[data-page]');
-    const iframe = document.getElementById('conteudoCarregado');
-    const dropdowns = document.querySelectorAll('.dropdown');
-    const flyouts = document.querySelectorAll('.flyout');
-
-    // Função para carregar páginas no iframe
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const pagina = this.getAttribute('data-page');
-            iframe.src = pagina;
-            closeAllMenus();
-        });
-    });
-
-    // Controlar menus
-    dropdowns.forEach(dropdown => {
-        const dropdownContent = dropdown.querySelector('.dropdown-content');
-        
-        dropdown.addEventListener('mouseenter', function() {
-            closeAllMenus();
-            dropdownContent.classList.add('show');
-        });
-        
-        dropdown.addEventListener('mouseleave', function(e) {
-            setTimeout(() => {
-                if (!dropdownContent.matches(':hover')) {
-                    dropdownContent.classList.remove('show');
-                }
-            }, 100);
-        });
-    });
-
-    flyouts.forEach(flyout => {
-        const flyoutContent = flyout.querySelector('.flyout-content');
-        
-        flyout.addEventListener('mouseenter', function() {
-            flyoutContent.classList.add('show');
-        });
-        
-        flyout.addEventListener('mouseleave', function(e) {
-            setTimeout(() => {
-                if (!flyoutContent.matches(':hover')) {
-                    flyoutContent.classList.remove('show');
-                }
-            }, 100);
-        });
-    });
-
-    // Fechar todos os menus quando clicar em qualquer lugar da página
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.menu-horizontal')) {
-            closeAllMenus();
-        }
-    });
-
-    // Função para fechar todos os menus
-    function closeAllMenus() {
-        document.querySelectorAll('.dropdown-content, .flyout-content').forEach(menu => {
-            menu.classList.remove('show');
-        });
-    }
-
-    // SISTEMA DE PESQUISA
-    document.getElementById('searchButton').addEventListener('click', performSearch);
-    document.getElementById('searchInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            performSearch();
-        }
-    });
-
-    async function performSearch() {
-        const query = document.getElementById('searchInput').value.toLowerCase().trim();
-        const resultsContainer = document.getElementById('searchResults');
-        
-        if (!query) {
-            resultsContainer.innerHTML = '<div style="padding: 10px; color: #666;">Digite algo para pesquisar</div>';
-            return;
-        }
-
-        resultsContainer.innerHTML = '<div style="padding: 10px; color: #666;">Pesquisando... (pode levar alguns segundos)</div>';
-
-        const pageLinks = document.querySelectorAll('[data-page]');
-        let results = [];
-
-        // Usar Promise.all para buscar várias páginas simultaneamente
-        const fetchPromises = Array.from(pageLinks).map(async (link) => {
-            const pageFile = link.getAttribute('data-page');
-            
-            try {
-                // Adicionar timestamp para evitar cache
-                const response = await fetch(`${pageFile}?t=${Date.now()}`);
-                
-                if (response.status === 200) {
-                    const text = await response.text();
-                    const pageText = extractTextFromHTML(text);
+            // Função para carregar páginas no iframe
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pagina = this.getAttribute('data-page');
+                    iframe.src = pagina;
                     
-                    if (pageText.toLowerCase().includes(query)) {
-                        return {
-                            title: link.textContent.trim(),
-                            page: pageFile,
-                            category: getCategoryFromLink(link),
-                            excerpt: getExcerpt(pageText, query)
-                        };
-                    }
-                }
-            } catch (error) {
-                console.warn(`Erro em ${pageFile}:`, error);
-            }
-            return null;
-        });
-
-        try {
-            const allResults = await Promise.all(fetchPromises);
-            results = allResults.filter(result => result !== null);
-            displaySearchResults(results, query);
-        } catch (error) {
-            resultsContainer.innerHTML = `
-                <div style="padding: 10px; color: #d00;">
-                    Erro na pesquisa: ${error.message}<br>
-                    <small>Verifique o console para detalhes.</small>
-                </div>
-            `;
-        }
-    }
-
-    // Função para extrair texto do HTML
-    function extractTextFromHTML(html) {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        
-        // Remover elementos que não contêm conteúdo de pesquisa
-        const elementsToRemove = tempDiv.querySelectorAll('script, style, nav, header, footer, meta, link');
-        elementsToRemove.forEach(el => el.remove());
-        
-        return tempDiv.textContent || tempDiv.innerText || '';
-    }
-
-    // Função para determinar a categoria do link
-    function getCategoryFromLink(link) {
-        let parent = link.closest('.flyout-content');
-        if (parent) {
-            let flyoutTitle = parent.previousElementSibling;
-            if (flyoutTitle && flyoutTitle.tagName === 'A') {
-                return flyoutTitle.textContent.trim();
-            }
-        }
-        return 'Geral';
-    }
-
-    function getExcerpt(text, query, length = 150) {
-        const index = text.toLowerCase().indexOf(query.toLowerCase());
-        if (index === -1) return 'Trecho não disponível';
-        
-        const start = Math.max(0, index - length/2);
-        const end = Math.min(text.length, index + query.length + length/2);
-        let excerpt = text.substring(start, end).trim();
-        
-        // Limpar o excerpt (remover múltiplos espaços, quebras de linha)
-        excerpt = excerpt.replace(/\s+/g, ' ');
-        
-        if (start > 0) excerpt = '...' + excerpt;
-        if (end < text.length) excerpt = excerpt + '...';
-        
-        return excerpt;
-    }
-
-    function displaySearchResults(results, query) {
-        const resultsContainer = document.getElementById('searchResults');
-        
-        if (results.length === 0) {
-            resultsContainer.innerHTML = `
-                <div style="padding: 10px; color: #666;">
-                    Nenhum resultado encontrado para "<strong>${query}</strong>".<br>
-                    <small>Tente usar palavras diferentes ou verifique se as páginas existem.</small>
-                </div>
-            `;
-            return;
-        }
-
-        resultsContainer.innerHTML = `
-            <div style="padding: 5px 10px; background: #f0f0f0; border-radius: 3px; margin-bottom: 10px;">
-                <strong>${results.length}</strong> resultado(s) encontrado(s) para "<strong>${query}</strong>"
-            </div>
-        `;
-
-        results.forEach(result => {
-            const resultElement = document.createElement('div');
-            resultElement.style.marginBottom = '15px';
-            resultElement.style.padding = '10px';
-            resultElement.style.border = '1px solid #e0e0e0';
-            resultElement.style.borderRadius = '5px';
-            resultElement.style.backgroundColor = '#f9f9f9';
-            
-            resultElement.innerHTML = `
-                <div style="font-weight: bold; margin-bottom: 5px;">
-                    <a href="#" data-page="${result.page}" class="search-result-link" 
-                       style="color: #3a1d4d; text-decoration: none;">
-                        ${result.title}
-                    </a>
-                </div>
-                <div style="font-size: 11px; color: #666; margin-bottom: 5px;">
-                    <strong>Categoria:</strong> ${result.category}
-                </div>
-                <div style="font-size: 11px; color: #333; font-style: italic;">
-                    ${result.excerpt}
-                </div>
-            `;
-            
-            resultsContainer.appendChild(resultElement);
-        });
-
-        // Adicionar evento de clique para os resultados
-        document.querySelectorAll('.search-result-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const page = this.getAttribute('data-page');
-                document.getElementById('conteudoCarregado').src = page;
-                closeAllMenus();
+                    // Fechar todos os menus após o clique
+                    closeAllMenus();
+                });
             });
-        });
-    }
-}); // FIM do DOMContentLoaded
-</script>
+
+            // Controlar abertura/fechamento dos dropdowns
+            dropdowns.forEach(dropdown => {
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
+                
+                dropdown.addEventListener('mouseenter', function() {
+                    closeAllMenus();
+                    dropdownContent.classList.add('show');
+                });
+                
+                dropdown.addEventListener('mouseleave', function(e) {
+                    // Só fecha se o mouse saiu do dropdown E não está em um flyout
+                    if (!dropdownContent.matches(':hover')) {
+                        setTimeout(() => {
+                            if (!dropdownContent.matches(':hover')) {
+                                dropdownContent.classList.remove('show');
+                            }
+                        }, 100);
+                    }
+                });
+            });
+
+            // Controlar abertura/fechamento dos flyouts
+            flyouts.forEach(flyout => {
+                const flyoutContent = flyout.querySelector('.flyout-content');
+                
+                flyout.addEventListener('mouseenter', function() {
+                    flyoutContent.classList.add('show');
+                });
+                
+                flyout.addEventListener('mouseleave', function(e) {
+                    // Só fecha se o mouse saiu do flyout
+                    setTimeout(() => {
+                        if (!flyoutContent.matches(':hover')) {
+                            flyoutContent.classList.remove('show');
+                        }
+                    }, 100);
+                });
+            });
+
+            // Fechar todos os menus quando clicar em qualquer lugar da página
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-horizontal')) {
+                    closeAllMenus();
+                }
+            });
+
+            // Função para fechar todos os menus
+            function closeAllMenus() {
+                document.querySelectorAll('.dropdown-content, .flyout-content').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+            }
+        });    </script>
 </body>
 </html>
