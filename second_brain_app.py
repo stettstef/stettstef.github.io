@@ -197,7 +197,7 @@ ano = st.text_input("Ano")
 pagina = st.text_input("Página (opcional)")
 
 categoria = st.selectbox("Categoria", [
-    "ZUMBIS", "ONTOLOGIA", "ANTROPOCENO", "COLONIALISMO"
+    "ZUMBIS", "WHITE GAZE", "CIÊNCIA", "HORROR", "HAITI", "REL. INTERN.", "ONTOLOGIA", "FUNGOS", "APOCALIPSE", "ÉTICA AMBIENTAL", "COLONIALISMO", "PÓS-HUMANISMO", "BIOLOGIA", "ANTROPOCENO", "CINEMA", "LINGUAGEM", "PSICANÁLISE", "FICÇÃO", "ESTUDOS CULTURAIS", "CRIP/QUEER/AFROFUTURISMO", "ESPECTROLOGIA", "ANTROPOLOGIA", "BASE TEÓRICA"
 ])
 
 if autor and ano:
